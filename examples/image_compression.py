@@ -12,16 +12,17 @@ l = 2
 poly = wav.wavelet_function.daubechies(order=3)
 
 # apply an l-level wavelet decomposition
-decomposition = wav.dwt_2d(image.copy(), poly, l)
+decomposition = wav.dwt_2d(image, poly, l)
 
 # erase the detail
 compression = zeros_like(decomposition)
 compression[:(compression.shape[0]/(2**l)), :(compression.shape[1]/(2**l))] = decomposition[:(compression.shape[0]/(2**l)), :(compression.shape[1]/(2**l))].copy()
 
 # reconstruct the image without detail
-image_hat = wav.idwt_2d(compression.copy(), poly, l)
+image_hat = wav.idwt_2d(compression, poly, l)
 
-fig, ax = plt.subplots(2, 2)
+# plotting
+fig, ax = plt.subplots(2, 2, figsize=(10, 10))
 fig.suptitle('mean squared reconstruction difference = {}'.format(sum(sum((image_hat - image)**2))/(image.shape[0] * image.shape[1])))
 
 ax[0, 0].imshow(image, cmap=plt.cm.gray)

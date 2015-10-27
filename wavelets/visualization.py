@@ -7,7 +7,7 @@ def plot_wavelet_decomposition(a, b):
     l = len(b)
 
     # init the figure
-    f, axis = plt.subplots(l+1, 1)
+    f, axis = plt.subplots(l+1, 1, figsize=(10, 10))
 
     # plot the approximation coefficients
     axis[0].plot(range(a.shape[0]), a, 'r')
