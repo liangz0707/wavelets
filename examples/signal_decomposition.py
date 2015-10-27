@@ -8,8 +8,8 @@ data_file = os.path.join(data_dir, 'ecg.txt')
 s = loadtxt(data_file)
 
 # obtain the low-pass and high-pass coefficients in polyphase form
-poly = wav.wavelet_function.daubechies(order=1)
-l = 1
+poly = wav.wavelet_function.daubechies(order=2)
+l = 2
 
 # apply an l-level wavelet decomposition
 a, b = wav.dwt(s, poly, l)

@@ -8,6 +8,4 @@ def classic2polyphase(c, d):
     :param d: high-pass coefficients
     :return: polyphase format containing c and d
     """
-    poly = concatenate((array(c)[newaxis, :], array(d)[newaxis, :]), axis=0)
-
-    return poly
+    return concatenate((array(c)[newaxis, :], array(d)[newaxis, :]), axis=0)
